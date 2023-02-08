@@ -124,7 +124,8 @@ class Profiling(object):
             prof.dump_stats(prof_filename)
         except EnvironmentError as err:
             if err.errno != errno.ENAMETOOLONG:
-                raise
+                print(err)
+                return
 
             if len(item.name) < LARGE_FILENAME_HASH_LEN:
                 raise
